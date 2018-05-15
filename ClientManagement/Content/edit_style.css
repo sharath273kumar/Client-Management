@@ -1,0 +1,12 @@
+﻿body {
+}
+header{
+    font-family:Arial;
+    background-color:beige;
+    height:100px;
+}
+#head{
+    height:80px;
+    font-weight:800;
+    float:left;
+}

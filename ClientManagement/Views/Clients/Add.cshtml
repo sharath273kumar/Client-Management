@@ -1,0 +1,91 @@
+﻿@using ClientManagement.Models
+
+@model ClientManagement.Models.Client
+@{
+    ViewBag.Title = "Add";
+}
+<html>
+<head>
+    <link href="@Url.Content("~/Content/add_style.css")" rel="stylesheet" type="text/css" />
+    <title></title></head>
+<body>
+    <header>
+        <h4 id="head">Never miss a client, <span> Create a Record</span></h4>
+    </header>
+    @using (Html.BeginForm("FormSubmit", "Clients", FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {
+        
+        <table cellpadding="0" cellspacing="0">
+                <tr>
+            <th colspan="2" align="center">Details</th>
+                </tr>
+            <tr>
+                <td><br />Id: </td>
+                <td>
+                   <br /> @Html.TextBoxFor(x => x.id)
+                          @Html.ValidationMessageFor(x => x.id, "", new { @class="danger"})
+                </td>
+            </tr>
+            <tr>
+                <td><br />Name: </td>
+                <td>
+                    <br />@Html.TextBoxFor(x => x.name)
+                          @Html.ValidationMessageFor(x => x.name, "", new { @class = "danger"})
+                </td>
+            </tr>
+            <tr>
+                <td><br />Company: </td>
+                <td>
+                    <br />@Html.TextBoxFor(x => x.company)
+                    @Html.ValidationMessageFor(x => x.company, "", new { @class = "danger" })
+                    
+                </td>
+            </tr>
+            <tr>
+                <td><br />Email: </td>
+                <td>
+                   <br /> @Html.TextBoxFor(x => x.email)
+                    @Html.ValidationMessageFor(x => x.email, "", new { @class = "danger" })
+                </td>
+            </tr>
+            <tr>
+                <td><br />DOB: </td>
+                <td>
+                    <br />@Html.TextBoxFor(x => x.dob)
+                </td>
+            </tr>
+            <tr>
+                <td><br />Gender: </td>
+                <td>
+                    @Html.RadioButtonFor(x => x.gender, "Male", true) Male  
+                    @Html.RadioButtonFor(x=> x.gender, "Female", false) Female 
+                </td>
+            </tr>
+            <tr>
+                <td><br />Designation: </td>
+                <td>
+                    <br />@Html.TextBoxFor(x => x.designation)
+                </td>
+            </tr>
+            <tr>
+                <td><br />Department: </td>
+                <td>
+                    <br />@Html.TextBoxFor(x => x.department)
+                    @Html.ValidationMessageFor(x => x.department, "", new { @class = "danger" })
+                </td>
+            </tr>
+            <tr>
+                <td><br />Picture: </td>
+                <td><br /><input type="file" name="filee" style="width: 100%;" /></td>
+            </tr>
+            <tr >
+                <td align="center" class="button_block" colspan="2"><br /><br /><input type="submit" value="Add" name="Button"/>     <input type="submit" value="Cancel" name="Button"/>
+                
+                </td>
+            </tr>
+        </table>
+    }
+</body>
+
+</html>
+

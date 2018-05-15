@@ -1,0 +1,74 @@
+﻿@using ClientManagement.Models
+@using PagedList.Mvc
+@model PagedList.IPagedList<ClientManagement.Models.Client>
+
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<html>
+<head>
+    <title></title>
+    <link href="@Url.Content("~/Content/index_style.css")" rel="stylesheet" type="text/css" />
+</head>
+<body>
+    <h2 id="left">Welcome,following are your active clients</h2><br /><br /><br>
+    <div id="display_block">
+        @using (Html.BeginForm("Functions", "Clients", FormMethod.Get))
+        {
+            <input type="submit" value="Add" name="act" class="left"/>
+            <div id="display">@Html.TextBox("search")<input type="submit" value="Search" name="act" /><input type="submit" value="Clear" name="act" /></div>
+        }
+    </div>
+        
+    <div id="align">
+        <table>
+            <tr class="bold">
+                <td></td>
+                <td>ID</td>
+                <td>Name</td>
+                <td>Company</td>
+                <td>Designation</td>
+                <td>Gender</td>
+                <td>Created</td>
+                <td>Last Updated</td>
+                <td></td>
+            </tr>
+            @for (int i = 0; i < Model.Count;i++ )
+            {
+                <tr>
+                    @{var base64 = Convert.ToBase64String(Model[i].imagedata);
+                      var imgSrc = String.Format("data:image/gif;base64,{0}", base64);
+                    }
+                    <td><img src='@imgSrc' /></td>
+                    <td>@Model[i].id
+                    
+                    </td>
+                    <td>@Model[i].name</td>
+                    <td>@Model[i].company</td>
+                    <td>@Model[i].designation</td>
+                    <td>@Model[i].gender</td>
+                    <td>@Model[i].created</td>
+                    <td>@Model[i].updated</td>
+                    <td>
+                        @Html.ActionLink("Edit", "Edit", new { id = Model[i].id }) |
+                        @Html.ActionLink("Delete", "Delete", new { id = Model[i].id })
+                    </td>  
+                   
+                </tr>
+            }
+        </table>
+
+    </div>
+    <div id="container" style="margin-left: 20px">
+        <p></p>
+        <p></p>
+        <div class="pagination" style="margin-left: 400px">
+            Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber)
+            of @Model.PageCount   @Html.PagedListPager(Model, page => Url.Action("Index", new { page }))
+        </div>
+    </div> 
+
+</body>
+</html>

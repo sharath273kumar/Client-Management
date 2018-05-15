@@ -1,0 +1,24 @@
+﻿@using ClientManagement.Models
+
+@model ClientManagement.Models.Admin
+@{
+    ViewBag.Title = "Admin";
+}
+<html>
+<head>
+    <title>Admin Login</title>
+    <link type="text/css" rel="stylesheet" href="~/Content/admin_style.css" />
+</head>
+<body>
+    <h1 id="title">Admin Login</h1><br /><br /><br />
+    @using(Html.BeginForm("Admin","Clients",FormMethod.Post))
+    {
+        <div class="label">
+        Username:@Html.TextBoxFor(m => m.username)<br /><br />
+        Password:@Html.PasswordFor(m => m.password)
+        </div>
+        <input type="submit" value="Login In" />
+    }
+    
+</body>
+</html>

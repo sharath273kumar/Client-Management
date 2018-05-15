@@ -1,0 +1,36 @@
+﻿body {
+    text-align:center;
+    font-family:Arial;
+}
+header{
+    font-family:Arial;
+    background-color:beige;
+    height:100px;
+}
+#head{
+    height:80px;
+    font-weight:200;
+    float:left;
+}
+span{
+    font-size:20px;
+    font-weight:900;
+}
+
+#left{
+     background-color: white;
+     color: black;
+     border: 2px solid #CCDFDA;
+}
+.button_block{
+    display:inline;
+    
+    background-color: white;
+     color: black;
+     border: 2px solid #CCDFDA;
+}
+.danger{
+    font-size:10px;
+    color:red;
+    font-weight:500
+}
